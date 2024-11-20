@@ -1,0 +1,12 @@
+.header {
+  position: fixed; /* 画面上部に固定 */
+  top: 0; /* 上端に配置 */
+  left: 0;
+  width: 100%; /* 横幅を画面いっぱいに */
+  background-color: #333; /* 背景色（任意） */
+  color: white; /* テキストの色 */
+  padding: 10px; /* 上下に余白 */
+  text-align: center; /* 中央揃え */
+  z-index: 1000; /* 他の要素の上に表示 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 少し影をつけて浮き上がらせる */
+}

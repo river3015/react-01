@@ -1,0 +1,5 @@
+.thread-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列レイアウト */
+  gap: 10px; /* 各カード間の余白 */
+}

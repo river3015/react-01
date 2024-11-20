@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState, useEffect } from 'react';
+import ThreadList from './ThreadList';
+import Pagination from './Pagination';
 import './App.css'
+import { Link } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const [threads, setThreads] = useState([]);
+  const [offset, setOffset] = useState(0);
+
+  const handleFirst = () => setOffset(0);
+  const handleNext = () => setOffset(prevOffset => prevOffset + 10);
+  const handlePrev = () => setOffset(prevOffset => Math.max(prevOffset - 10, 0));
+
+  async function getThreadList() {
+    const url = `https://railway.bulletinboard.techtrain.dev/threads?offset=${offset}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`レスポンスステータス: ${response.status}`);
+      }
+      const data = await response.json();
+      setThreads(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getThreadList();
+  }, [offset]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container">
+      <Link to="/threads/new">
+        <button>スレッド作成はこちら</button>
+      </Link>
+      <ThreadList threads={threads} />
+      <Pagination
+        handleFirst={handleFirst}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+        offset={offset}
+      />
+    </div>
+  );
+};
 
-export default App
+export default App;

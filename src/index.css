@@ -66,3 +66,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.container {
+  margin-top: 60px; /* 固定ヘッダーの高さ分の余白を追加 */
+  padding: 20px;
+}

@@ -1,0 +1,13 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.pagination button {
+  margin: 0 5px; /* 各ボタンの左右に間隔を設定 */
+}
+
+.pagination button:first-of-type {
+  margin-right: 40px; /* 最初のボタンの右側に余白を追加 */
+}
