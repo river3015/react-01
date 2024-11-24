@@ -1,14 +1,15 @@
 // NewThread.jsx
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NewThread = () => {
-  const titleRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const title = titleRef.current.value.trim();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const title = formData.get('title')?.trim();
     if (title) {
       try {
         const response = await fetch('https://railway.bulletinboard.techtrain.dev/threads', {
@@ -23,8 +24,7 @@ const NewThread = () => {
           throw new Error(`レスポンスステータス: ${response.status}`);
         }
 
-        // 成功したら入力をリセット
-        titleRef.current.value = '';
+        form.reset();
         console.log("スレッドが作成されました");
       } catch (error) {
         console.error("スレッド作成エラー:", error.message);
@@ -39,7 +39,7 @@ const NewThread = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          ref={titleRef}
+          name="title"
           placeholder="件名を入力してください"
           required
         />
