@@ -45,9 +45,7 @@ const NewThread = () => {
         />
         <button type="submit">スレッド作成</button>
       </form>
-      <Link to="/">
-        <button>スレッド一覧画面はこちら</button>
-      </Link>
+      <Link to="/">スレッド一覧画面はこちら</Link>
     </div>
   );
 };
