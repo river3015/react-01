@@ -34,9 +34,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <Link to="/threads/new">
-        <button>スレッド作成はこちら</button>
-      </Link>
+      <Link to="/threads/new">スレッド作成はこちら</Link>
       <ThreadList threads={threads} />
       <Pagination
         handleFirst={handleFirst}
