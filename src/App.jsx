@@ -22,7 +22,7 @@ const App = () => {
       }
       const data = await response.json();
       setThreads(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error(error.message);
     }
@@ -34,8 +34,9 @@ const App = () => {
 
   return (
     <div className="container">
-      <Link to="/threads/new">スレッド作成はこちら</Link>
-      <ThreadList threads={threads} />
+      <Link to="/threads/new" className="new-thread">スレッド作成はこちら</Link>
+      <h2>現在のスレッド一覧</h2>
+      <ThreadList threads={threads} offset={offset}/>
       <Pagination
         handleFirst={handleFirst}
         handlePrev={handlePrev}

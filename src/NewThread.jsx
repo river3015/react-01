@@ -1,6 +1,7 @@
 // NewThread.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './NewThread.css'
 
 const NewThread = () => {
 
@@ -24,6 +25,8 @@ const NewThread = () => {
           throw new Error(`レスポンスステータス: ${response.status}`);
         }
 
+        console.log(title);
+        console.log(JSON.stringify({ title }));
         form.reset();
         console.log("スレッドが作成されました");
       } catch (error) {
@@ -45,7 +48,7 @@ const NewThread = () => {
         />
         <button type="submit">スレッド作成</button>
       </form>
-      <Link to="/">スレッド一覧画面はこちら</Link>
+      <Link to="/" className="return-thread">スレッド一覧画面はこちら</Link>
     </div>
   );
 };

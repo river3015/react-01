@@ -1,16 +1,4 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.container {
-  display: grid;      /* グリッドレイアウトを使用 */
-  position: relative; /* 親要素にrelativeを設定 */
-}
-
-.new-thread {
+.return-thread {
   display: flex;                /* コンテンツを中央寄せ */
   align-items: center;
   justify-content: center;
@@ -22,6 +10,6 @@
   transition: box-shadow 0.3s;
 }
 
-.new-thread:hover {
+.return-thread:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
