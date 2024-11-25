@@ -5,8 +5,8 @@ import './ThreadList.css';
 const ThreadList = ({ threads }) => {
   return (
     <div className="thread-list">
-      {threads.map(thread => (
-        <ThreadCard key={thread.id} title={thread.title} />
+      {threads.map((thread ) => (
+        <ThreadCard key={thread.id} id={thread.id} title={thread.title} />
       ))}
     </div>
   );

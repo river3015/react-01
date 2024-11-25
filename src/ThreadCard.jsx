@@ -1,11 +1,11 @@
 import React from 'react';
 import './ThreadCard.css';
+import { Link } from 'react-router-dom';
 
-const ThreadCard = ({ title }) => {
+const ThreadCard = ({ id, title }) => {
+
   return (
-    <div className="card">
-      <h2 className="card-title">{title}</h2>
-    </div>
+      <Link to={`/threads/:${id}`} className="thread-card">{title}</Link>
   );
 };
 
